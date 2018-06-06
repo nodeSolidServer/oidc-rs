@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anvilresearch/oidc-rs.git"
+    "url": "git+https://github.com/solid/oidc-rs.git"
   },
   "author": "",
   "contributors": [
@@ -27,21 +27,21 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anvilresearch/oidc-rs/issues"
+    "url": "https://github.com/solid/oidc-rs/issues"
   },
-  "homepage": "https://github.com/anvilresearch/oidc-rs#readme",
+  "homepage": "https://github.com/solid/oidc-rs#readme",
   "dependencies": {
-    "@trust/jose": "^0.1.7",
-    "node-fetch": "^1.7.1"
+    "@trust/jose": "solid/jose#rc-0.1.8",
+    "node-fetch": "^2.1.2"
   },
   "devDependencies": {
-    "chai": "^4.0.2",
+    "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
-    "mocha": "^3.2.0",
-    "nock": "^9.0.13",
-    "node-mocks-http": "^1.6.3",
-    "sinon": "^2.3.4",
-    "sinon-chai": "^2.11.0"
+    "mocha": "^5.2.0",
+    "nock": "^9.3.0",
+    "node-mocks-http": "^1.7.0",
+    "sinon": "^5.1.0",
+    "sinon-chai": "^3.1.0"
   }
 }
