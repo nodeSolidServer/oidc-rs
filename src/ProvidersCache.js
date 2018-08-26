@@ -2,7 +2,7 @@
  * Dependencies
  */
 const fetch = require('node-fetch')
-const {JWKSet} = require('@trust/jose')
+const {JWKSet} = require('@solid/jose')
 
 /**
  * ProvidersCache

@@ -1,7 +1,7 @@
 /**
  * Dependencies
  */
-const {JWT} = require('@trust/jose')
+const {JWT} = require('@solid/jose')
 const Credential = require('./Credential')
 
 /**
