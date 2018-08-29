@@ -18,16 +18,14 @@ OpenID Connect Resource Server Authentication for Node.js
 
 ### Install
 
-We're still tidying up a few things. The package will be published to npm after testing and docs are complete.
-
 ```bash
-$ npm install https://github.com/anvilresearch/oidc-rs.git
+$ npm install @solid/oidc-rs
 ```
 
 ### Require
 
 ```
-const ResourceServer = require('oidc-rs')
+const ResourceServer = require('@solid/oidc-rs')
 ```
 
 ### ResourceServer
