@@ -17,7 +17,7 @@ let expect = chai.expect
 /**
  * Code under test
  */
-const {JWKSet} = require('@trust/jose')
+const {JWKSet} = require('@solid/jose')
 const ProvidersCache = require('../src/ProvidersCache')
 
 /**

@@ -1,6 +1,6 @@
 'use strict'
 
-const {JWT, JWK} = require('@trust/jose')
+const {JWT, JWK} = require('@solid/jose')
 const AccessToken = require('./AccessToken')
 const {UnauthorizedError} = require('./errors/index')
 
