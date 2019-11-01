@@ -267,12 +267,6 @@ class AuthenticatedRequest {
       })
     }
 
-    let validation = jwt.validate()
-
-    if (!validation.valid) {
-      return request.badRequest('Access token is invalid')
-    }
-
     try {
       request.credential = Credential.from(jwt)
     } catch (err) {
