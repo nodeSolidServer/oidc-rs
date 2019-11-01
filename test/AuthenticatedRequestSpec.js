@@ -9,11 +9,12 @@ const HttpMocks = require('node-mocks-http')
 /**
  * Assertions
  */
+
 chai.use(require('sinon-chai'))
 chai.use(require('dirty-chai'))
 chai.use(require('chai-as-promised'))
+const { expect } = chai
 chai.should()
-let expect = chai.expect
 
 /**
  * Code under test
@@ -1213,16 +1214,19 @@ describe('AuthenticatedRequest', () => {
         }
       })
 
-      it('should set WWW-Authenticate challenge', done => {
+      it('should set WWW-Authenticate challenge', () => {
+        let thrownError
         try {
           request.unauthorized(params)
-        } catch (err) {
-          expect(err).to.exist()
-          let expectedHeader = 'Bearer realm="https://example.com", scope="openid", error="invalid_token", error_description="unauthorized error message", error_uri="https://example.com/errors/1"'
-
-          expect(request.res._getHeaders()['WWW-Authenticate']).to.equal(expectedHeader)
-          done()
+        } catch (error) {
+          thrownError = error
         }
+
+        expect(thrownError).to.exist()
+        const expectedHeader = 'Bearer realm="https://example.com", scope="openid", error="invalid_token", error_description="unauthorized error message", error_uri="https://example.com/errors/1"'
+
+        expect(request.res._getHeaders()['www-authenticate'])
+          .to.equal(expectedHeader)
       })
     })
 
@@ -1277,7 +1281,7 @@ describe('AuthenticatedRequest', () => {
           expect(err).to.exist()
           let expectedHeader = 'Bearer realm="https://example.com", scope="openid", error="error", error_description="forbidden error message", error_uri="https://example.com/errors/1"'
 
-          expect(request.res._getHeaders()['WWW-Authenticate']).to.equal(expectedHeader)
+          expect(request.res._getHeaders()['www-authenticate']).to.equal(expectedHeader)
           done()
         }
       })
