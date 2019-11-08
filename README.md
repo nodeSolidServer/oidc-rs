@@ -11,8 +11,6 @@ OpenID Connect Resource Server Authentication for Node.js
 * [x] Multiple issuer support
 * [x] Scope validation
 * [x] Allow and deny access by "iss", "aud", and "sub" claims
-* [ ] OAuth 2.0 Token Introspection (RFC 7662)
-* [ ] Cookie Token Authentication (Specification pending)
 
 ## Usage
 
@@ -33,13 +31,13 @@ const ResourceServer = require('@solid/oidc-rs')
 ResourceServer maintains a cache of provider metadata and JSON Web Keys for verifying signatures. Provider discovery and acquisition of keys takes place when a JWT access token is decoded. The provider metadata and JWK Set are cached in memory. Therefore no configuration is required.
 
 ```
-let rs = new ResourceServer()
+const rs = new ResourceServer()
 ```
 
 The provider cache can be serialized and persisted, then restored like so:
 
 ```
-let providers = require('./providers.json')
+const providers = require('./providers.json')
 ResourceServer.from({providers}).then(rs => /* ... */)
 ```
 
@@ -98,6 +96,9 @@ $ npm test
 
 ## MIT License
 
+[The MIT License](LICENSE.md)
+
 Copyright (c) 2016 Anvil Research, Inc.
+Copyright (c) 2017-2019 The Solid Project
 
 

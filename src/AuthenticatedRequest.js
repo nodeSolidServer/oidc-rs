@@ -267,12 +267,6 @@ class AuthenticatedRequest {
       })
     }
 
-    let validation = jwt.validate()
-
-    if (!validation.valid) {
-      return request.badRequest('Access token is invalid')
-    }
-
     try {
       request.credential = Credential.from(jwt)
     } catch (err) {
@@ -739,7 +733,7 @@ class AuthenticatedRequest {
    * @param {Object} params
    */
   unauthorized (params = {}) {
-    let {res, next, options} = this
+    const {res, next, options} = this
 
     res.set({
       'WWW-Authenticate': `Bearer ${this.encodeChallengeParams(params)}`
@@ -747,7 +741,7 @@ class AuthenticatedRequest {
 
     res.status(401)
 
-    let error = new UnauthorizedError(params)
+    const error = new UnauthorizedError(params)
 
     // pass error
     if (options.handleErrors === false) {
