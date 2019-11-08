@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/solid/oidc-rs#readme",
   "dependencies": {
-    "@solid/jose": "solid/jose#swap-webcrypto",
+    "@solid/jose": "^0.5.0",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
