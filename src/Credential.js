@@ -2,6 +2,7 @@
 
 const AccessToken = require('./AccessToken')
 const PoPToken = require('./PoPToken')
+const DPoPToken = require('./DPoPToken')
 
 class Credential {
   /**
@@ -9,9 +10,16 @@ class Credential {
    *
    * @throws {DataError} If decoding an invalid access token (inside PoPToken)
    */
-  static from (jwt) {
+  static from (jwt, request) {
     if (jwt.payload && jwt.payload.token_type === 'pop') {
       return new PoPToken(jwt)
+    } else if (request.tokenType === 'dpop') {
+      return new DPoPToken(
+        jwt,
+        request.req.headers.dpop,
+        request.options.realm,
+        request.req
+      )
     } else {
       return new AccessToken(jwt)
     }

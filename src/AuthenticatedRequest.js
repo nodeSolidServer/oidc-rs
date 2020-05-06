@@ -14,6 +14,9 @@ const {
   UnauthorizedError
 } = require('./errors')
 
+const LEGACY_POP = 'legacyPop'
+const DPOP = 'dpop'
+
 /**
  * AuthenticatedRequest
  */
@@ -104,10 +107,19 @@ class AuthenticatedRequest {
         return request.badRequest('Invalid authorization header')
       }
 
-      if (scheme !== 'Bearer') {
+      if (
+        scheme.toLowerCase() === 'bearer' &&
+        request.options.tokenTypesSupported.includes(LEGACY_POP)
+      ) {
+        request.tokenType = 'bearer'
+      } else if (
+        scheme.toLowerCase() === 'dpop' &&
+        request.options.tokenTypesSupported.includes(DPOP)
+      ) {
+        request.tokenType = 'dpop'
+      } else {
         return request.badRequest('Invalid authorization scheme')
       }
-
       request.token = credentials
     }
 
@@ -268,7 +280,7 @@ class AuthenticatedRequest {
     }
 
     try {
-      request.credential = Credential.from(jwt)
+      request.credential = Credential.from(jwt, request)
     } catch (err) {
       return request.badRequest(err.error_description)
     }
@@ -326,7 +338,9 @@ class AuthenticatedRequest {
       return request
     }
 
-    request.allowAudience(request)
+    if (request.tokenType === LEGACY_POP) {
+      request.allowAudience(request)
+    }
 
     request.allowIssuer(request)
 
