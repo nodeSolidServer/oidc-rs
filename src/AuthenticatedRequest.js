@@ -46,7 +46,10 @@ class AuthenticatedRequest {
     this.req = req
     this.res = res
     this.next = next
-    this.options = options
+    this.options = {
+      ...options,
+      tokenTypesSupported: [DPOP, LEGACY_POP]
+    }
   }
 
   /**

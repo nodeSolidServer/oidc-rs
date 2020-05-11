@@ -13,7 +13,7 @@ class Credential {
   static from (jwt, request) {
     if (jwt.payload && jwt.payload.token_type === 'pop') {
       return new PoPToken(jwt)
-    } else if (request.tokenType === 'dpop') {
+    } else if (request && request.tokenType === 'dpop') {
       return new DPoPToken(
         jwt,
         request.req.headers.dpop,
