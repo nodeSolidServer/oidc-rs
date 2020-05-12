@@ -341,7 +341,7 @@ class AuthenticatedRequest {
       return request
     }
 
-    if (request.tokenType === LEGACY_POP) {
+    if (request.tokenType === 'bearer') {
       request.allowAudience(request)
     }
 
