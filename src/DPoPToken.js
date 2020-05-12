@@ -3,6 +3,7 @@ const JWT = require('jsonwebtoken')
 const { jwkThumbprintByEncoding } = require('jwk-thumbprint')
 const {UnauthorizedError} = require('./errors/index')
 const jwkToPem = require('jwk-to-pem')
+const URL = require('url').URL;
 
 class DPoPToken extends AccessToken {
   /**
