@@ -58,7 +58,13 @@ describe('AuthenticatedRequest', () => {
     })
 
     it('should set options', () => {
-      expect(request.options).to.equal(options)
+      expect(request.options).to.eql({
+        ...options,
+        tokenTypesSupported: [
+          "dpop",
+          "legacyPop"
+        ]
+      })
     })
   })
 
@@ -423,6 +429,7 @@ describe('AuthenticatedRequest', () => {
     describe('with configured audience and unknown client', () => {
       it('should throw an error', done => {
         request.credential.jwt.payload.aud = 'some-client'
+        request.tokenType = 'legacyPop'
 
         try {
           request.allow(request)
@@ -436,6 +443,7 @@ describe('AuthenticatedRequest', () => {
 
       it('should throw via "Forbidden', done => {
         request.credential.jwt.payload.aud = 'some-client'
+        request.tokenType = 'legacyPop'
 
         try {
           request.allow(request)
@@ -485,6 +493,7 @@ describe('AuthenticatedRequest', () => {
             iss: 'issuer1', aud: 'aud1', sub: 'subj1'
           }
         })
+        request.tokenType = 'legacyPop'
         sinon.spy(request, 'forbidden')
 
         try {
