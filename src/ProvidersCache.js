@@ -58,7 +58,7 @@ class ProvidersCache {
    * @returns {Promise}
    */
   discover (issuer) {
-    return fetch(`${issuer}${issuer.endsWith('/') ? '' : '/'}.well-known/openid-configuration`)
+    return fetch(issuer.replace(/\/*$/, '/.well-known/openid-configuration')
       //.then(validateStatus)
       .then(response => response.json())
   }
