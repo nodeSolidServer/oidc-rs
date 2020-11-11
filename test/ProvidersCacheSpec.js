@@ -80,6 +80,23 @@ describe('ProvidersCache', () => {
           expect(res.authorization_endpoint).to.equal(issuer + '/authorize')
         })
     })
+
+    it('should not have a double slash when the issuer has a trailing slash', () => {
+      let issuer = 'https://example.com'
+      nock(issuer)
+        .get('//.well-known/openid-configuration')
+        .reply(200, { passedTest: false })
+      nock(issuer)
+        .get('/.well-known/openid-configuration')
+        .reply(200, { passedTest: true })
+      
+      let cache = new ProvidersCache()
+
+      return cache.discover(`${issuer}/`)
+        .then(res => {
+          expect(res.passedTest).to.equal(true)
+        })
+    })
   })
 
   describe('jwks', () => {
