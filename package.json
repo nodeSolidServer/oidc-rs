@@ -8,6 +8,8 @@
   },
   "scripts": {
     "build": "echo nothing to build",
+    "postversion": "git push --follow-tags",
+    "preversion": "npm test",
     "test": "mocha"
   },
   "repository": {
