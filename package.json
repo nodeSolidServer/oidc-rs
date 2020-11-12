@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/solid/oidc-rs#readme",
   "dependencies": {
-    "@solid/jose": "^0.6.1",
+    "@solid/jose": "^0.6.2",
     "jsonwebtoken": "^8.5.1",
     "jwk-thumbprint": "^0.1.4",
     "jwk-to-pem": "^2.0.4",
