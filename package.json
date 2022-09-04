@@ -34,20 +34,20 @@
   },
   "homepage": "https://github.com/solid/oidc-rs#readme",
   "dependencies": {
-    "@solid/jose": "^0.6.5",
+    "@solid/jose": "^0.6.8",
     "jsonwebtoken": "^8.5.1",
     "jwk-thumbprint": "^0.1.4",
-    "jwk-to-pem": "^2.0.4",
-    "node-fetch": "^2.6.1"
+    "jwk-to-pem": "^2.0.5",
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
-    "mocha": "^8.2.1",
-    "nock": "^13.0.6",
-    "node-mocks-http": "^1.10.1",
+    "mocha": "^8.4.0",
+    "nock": "^13.2.9",
+    "node-mocks-http": "^1.11.0",
     "sinon": "^9.2.4",
-    "sinon-chai": "^3.5.0"
+    "sinon-chai": "^3.7.0"
   }
 }
