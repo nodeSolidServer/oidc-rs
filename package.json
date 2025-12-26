@@ -1,6 +1,6 @@
 {
   "name": "@solid/oidc-rs",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "description": "OpenID Connect Resource Server Authentication for Node.js",
   "main": "src/index.js",
   "directories": {
